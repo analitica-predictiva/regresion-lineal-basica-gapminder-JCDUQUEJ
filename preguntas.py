@@ -34,11 +34,11 @@ def pregunta_01():
 
     # Transforme `y` a un array de numpy usando reshape
     #y_reshaped = y.reshape(____, ____)
-    y_reshaped = y.reshape(y, (len(y),1))
+    y_reshaped = np.reshape(y, (len(y),1))
 
     # Trasforme `X` a un array de numpy usando reshape
     #X_reshaped = X.reshape(____, ____)
-    X_reshaped = X.reshape(X, (len(X),1))
+    X_reshaped = np.reshape(X, (len(X),1))
 
     # Imprima las nuevas dimensiones de `y`
     print(y_reshaped.shape)
@@ -111,8 +111,8 @@ def pregunta_03():
     #    ____,
     #).reshape(____, _____)
     prediction_space = np.linspace(
-        X_fertility.min,
-        X_fertility.max,
+        X_fertility.min(),
+        X_fertility.max(),
     ).reshape(-1, 1)
 
     # Entrene el modelo usando X_fertility y y_life
