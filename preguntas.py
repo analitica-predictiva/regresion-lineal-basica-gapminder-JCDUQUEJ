@@ -30,7 +30,7 @@ def pregunta_01():
 
     # Imprima las dimensiones de `X`
     #print(____.____)
-    print(x.shape)
+    print(X.shape)
 
     # Transforme `y` a un array de numpy usando reshape
     #y_reshaped = y.reshape(____, ____)
@@ -38,7 +38,7 @@ def pregunta_01():
 
     # Trasforme `X` a un array de numpy usando reshape
     #X_reshaped = X.reshape(____, ____)
-    X_reshaped = X.reshape(x, (len(x),1))
+    X_reshaped = X.reshape(X, (len(X),1))
 
     # Imprima las nuevas dimensiones de `y`
     print(y_reshaped.shape)
@@ -111,8 +111,8 @@ def pregunta_03():
     #    ____,
     #).reshape(____, _____)
     prediction_space = np.linspace(
-        df['fertility'].min(),
-        df['fertility'].max(),
+        X_fertility.min,
+        X_fertility.max,
     ).reshape(-1, 1)
 
     # Entrene el modelo usando X_fertility y y_life
@@ -138,19 +138,21 @@ def pregunta_04():
     # Importe train_test_split
     # Importe mean_squared_error
     #from ____ import ____
-    from ____ import ____
+    from sklearn.linear_model import LinearRegression
+    from sklearn.model_selection import train_test_split
+    from sklearn.metrics import mean_squared_error
 
     # Lea el archivo `gm_2008_region.csv` y asignelo al DataFrame `df`
     #df = ____
-    df = ____
+    df = pd.read_csv('gm_2008_region.csv')
 
     # Asigne a la variable los valores de la columna `fertility`
     #X_fertility = ____
-    X_fertility = ____
+    X_fertility = df['fertility'].copy()
 
     # Asigne a la variable los valores de la columna `life`
     #y_life = ____
-    y_life = ____
+    y_life = df['life'].copy()
 
     # Divida los datos de entrenamiento y prueba. La semilla del generador de números
     # aleatorios es 53. El tamaño de la muestra de entrenamiento es del 80%
