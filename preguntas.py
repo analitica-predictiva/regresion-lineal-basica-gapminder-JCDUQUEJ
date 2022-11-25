@@ -148,11 +148,11 @@ def pregunta_04():
 
     # Asigne a la variable los valores de la columna `fertility`
     #X_fertility = ____
-    X_fertility = df['fertility'].copy()
+    X_fertility = np.array(df['fertility'].copy())
 
     # Asigne a la variable los valores de la columna `life`
     #y_life = ____
-    y_life = df['life'].copy()
+    y_life = np.array(df['life'].copy())
 
     # Divida los datos de entrenamiento y prueba. La semilla del generador de números
     # aleatorios es 53. El tamaño de la muestra de entrenamiento es del 80%
