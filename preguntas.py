@@ -21,8 +21,8 @@ def pregunta_01():
     # Asigne la columna "life" a `y` y la columna "fertility" a `X`
     #y = ____[____].____
     #X = ____[____].____
-    y = df['life'].copy()
-    X = df['fertility'].copy()
+    y = np.array(df['life'].copy())
+    X = np.array(df['fertility'].copy())
 
     # Imprima las dimensiones de `y`
     #print(____.____)
@@ -111,8 +111,8 @@ def pregunta_03():
     #    ____,
     #).reshape(____, _____)
     prediction_space = np.linspace(
-        X_fertility.min(),
-        X_fertility.max(),
+        np.amin(X_fertility),
+        np.amax(X_fertility),
     ).reshape(-1, 1)
 
     # Entrene el modelo usando X_fertility y y_life
@@ -162,27 +162,27 @@ def pregunta_04():
     #    test_size=____,
     #    random_state=____,
     #)
-    (X_train, X_test, y_train, y_test,) = ____(
-        ____,
-        ____,
-        test_size=____,
-        random_state=____,
+    (X_train, X_test, y_train, y_test,) = train_test_split(
+        X_fertility,
+        y_life,
+        test_size=0.8,
+        random_state=53,
     )
 
     # Cree una instancia del modelo de regresión lineal
     #linearRegression = ____
-    linearRegression = ____
+    linearRegression = LinearRegression()
 
     # Entrene el clasificador usando X_train y y_train
     #____.fit(____, ____)
-    ____.fit(____, ____)
+    linearRegression.fit(X_train, y_train)
 
     # Pronostique y_test usando X_test
     #y_pred = ____
-    y_pred = ____
+    y_pred = linearRegression.predict(X_test)
 
     # Compute and print R^2 and RMSE
     print("R^2: {:6.4f}".format(linearRegression.score(X_test, y_test)))
     #rmse = np.sqrt(____(____, ____))
-    rmse = np.sqrt(____(____, ____))
+    rmse = np.sqrt(mean_squared_error(y_test, y_pred))
     print("Root Mean Squared Error: {:6.4f}".format(rmse))
