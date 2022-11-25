@@ -90,11 +90,11 @@ def pregunta_03():
 
     # Asigne a la variable los valores de la columna `fertility`
     #X_fertility = ____
-    X_fertility = df['fertility'].copy()
+    X_fertility = df[['fertility']].copy()
 
     # Asigne a la variable los valores de la columna `life`
     #y_life = ____
-    y_life = df['life'].copy()
+    y_life = df[['life']].copy()
 
     # Importe LinearRegression
     #from ____ import ____
@@ -111,8 +111,8 @@ def pregunta_03():
     #    ____,
     #).reshape(____, _____)
     prediction_space = np.linspace(
-        np.amin(X_fertility),
-        np.amax(X_fertility),
+        X_fertility.min(),
+        X_fertility.max(),
     ).reshape(-1, 1)
 
     # Entrene el modelo usando X_fertility y y_life
@@ -148,11 +148,11 @@ def pregunta_04():
 
     # Asigne a la variable los valores de la columna `fertility`
     #X_fertility = ____
-    X_fertility = np.array(df['fertility'].copy())
+    X_fertility = df[['fertility']].copy()
 
     # Asigne a la variable los valores de la columna `life`
     #y_life = ____
-    y_life = np.array(df['life'].copy())
+    y_life = df[['life']].copy()
 
     # Divida los datos de entrenamiento y prueba. La semilla del generador de números
     # aleatorios es 53. El tamaño de la muestra de entrenamiento es del 80%
@@ -168,6 +168,7 @@ def pregunta_04():
         test_size=0.2,
         random_state=53,
     )
+
 
     # Cree una instancia del modelo de regresión lineal
     #linearRegression = ____
